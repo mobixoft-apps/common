@@ -9,7 +9,7 @@ import Alamofire
 import Sentry
 import SwiftPlus
 
-final class AFHTTPErrorLogger {
+public final class AFHTTPErrorLogger {
   
   static func sendLog(message: String, extra: String) {
     SentrySDK.capture(message: message) { (scope) in

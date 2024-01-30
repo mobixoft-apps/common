@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 import Sentry
 
-extension AFError {
+public extension AFError {
   func send(url: String) {
     SentrySDK.capture(message: self.localizedDescription) { (scope) in
       scope.setExtra(value: url, key: "url")

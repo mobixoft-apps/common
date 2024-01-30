@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
 
-protocol NetworkServiceProtocol {
+public protocol NetworkServiceProtocol {
   func request<T: Decodable>(
     url: URL,
     parameters: Parameters,
@@ -18,7 +18,7 @@ protocol NetworkServiceProtocol {
     completion: @escaping (Result<T, Error>) -> Void)
 }
 
-extension NetworkServiceProtocol {
+public extension NetworkServiceProtocol {
   /// Request
   /// - Parameters:
   ///   - parameters: Parameters
