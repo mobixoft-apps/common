@@ -15,7 +15,7 @@ let package = Package(
     .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.8.0"),
     .package(url: "https://github.com/getsentry/sentry-cocoa", from: "8.19.0"),
     .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.20.0"),
-    .package(path: "/Users/devuzan/Projects/SwiftPlus")
+    .package(url: "https://github.com/mobixoft-apps/SwiftPlus", branch: "main")
   ],
   targets: [
     // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -26,7 +26,8 @@ let package = Package(
         .product(name: "Alamofire", package: "Alamofire"),
         .product(name: "Sentry", package: "sentry-cocoa"),
         .product(name: "SwiftPlus", package: "SwiftPlus"),
-
+        .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
+        .product(name: "FirebaseRemoteConfig", package: "firebase-ios-sdk")
       ]),
     .testTarget(
       name: "CommonTests",

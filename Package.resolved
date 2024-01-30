@@ -136,6 +136,15 @@
       }
     },
     {
+      "identity" : "swiftplus",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mobixoft-apps/SwiftPlus",
+      "state" : {
+        "branch" : "main",
+        "revision" : "2317e55a7b8bd4d948a6afc6b10812a0373afb03"
+      }
+    },
+    {
       "identity" : "swiftykeychainkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/andriyslyusar/SwiftyKeychainKit",
