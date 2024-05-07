@@ -40,11 +40,13 @@ public extension NetworkServiceProtocol {
     request.responseData { response in
       if let error = response.error {
         let log = AFHTTPErrorLogger.log(result: response)
+        print(log)
         AFHTTPErrorLogger.sendLog(message: error.localizedDescription, extra: log)
         completion(.failure(error))
       }
       guard let data = response.data else {
         let log = AFHTTPErrorLogger.log(result: response)
+        print(log)
         AFHTTPErrorLogger.sendLog(message: "No Data", extra: log)
         return
       }
@@ -52,12 +54,29 @@ public extension NetworkServiceProtocol {
       decoder.keyDecodingStrategy = .convertFromSnakeCase
       do {
         let object = try decoder.decode(T.self, from: data)
+        print("=============RESPONSE================")
+        print(data.prettyPrintedJSONString ?? "-")
+        print("=====================================")
         completion(.success(object))
       } catch let decodeError {
         let log = AFHTTPErrorLogger.log(result: response)
+        print(log)
         AFHTTPErrorLogger.sendLog(message: decodeError.localizedDescription, extra: log)
         completion(.failure(decodeError))
       }
-    }
+    }.debugLog()
+  }
+}
+
+extension Request {
+  public func debugLog() -> Self {
+#if DEBUG
+    cURLDescription(calling: { (curl) in
+      debugPrint("=======================================")
+      print(curl)
+      debugPrint("=======================================")
+    })
+#endif
+    return self
   }
 }
